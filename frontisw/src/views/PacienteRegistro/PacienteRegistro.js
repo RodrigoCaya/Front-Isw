@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-
-class FormPaciente extends Component{ //transforma la clase en componente
+class PacienteRegistro extends Component{ //transforma la clase en componente
 
     render(){//esto es para que muestre contenido HTML
         return(//codigo jsx
-        <div className="container" style={{display: 'block',  justifyContent:'center', alignItems:'center', height: '100vh', marginTop: '50px'}}>
+        <div>
+            <div className="container" style={{display: 'block',  justifyContent:'center', alignItems:'center', height: '100vh', marginTop: '50px'}}>
             <header class="masthead">
                 <div class="container h-100">
-                     <div class="row h-100 align-items-center">
+                    <div class="row h-100 align-items-center">
                         <div id="titulo" class="col-12 text-center">
                             <h1 class="font-weight-light">Registro Paciente</h1>
                             <p class="lead">Ingresa los datos del paciente en el siguiente formulario</p>
                         </div>
                     </div>
-                 </div>
+                </div>
             </header>
             <form class="needs-validation" novalidate>
             <div class="form-row">
@@ -61,8 +61,9 @@ class FormPaciente extends Component{ //transforma la clase en componente
             <button class="btn btn-primary" type="submit">Registrar</button>
             </form>
         </div>
+        </div>
         );
     }
 };
 
-export default FormPaciente;
+export default PacienteRegistro;

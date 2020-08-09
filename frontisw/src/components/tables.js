@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import pacientesService from './services/pacientes.service';
+import pacientesService from '../services/pacientes.service';
 
 class Tables extends Component{ //transforma la clase en componente
 

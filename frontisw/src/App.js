@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
+import { Router, Switch, Route } from "react-router-dom";
+import history from './helpers/history'
 
 //my imports
-import Navbar from './navbar'; //si es javascript no es necesario que sea .js
-import Tables from './tables';
-import Form from './form';
-import NavBarPaciente from './NavBarPaciente'
+import Navbar from './components/navbar'; //si es javascript no es necesario que sea .js
+import Tables from './components/tables';
+import NavBarPaciente from './components/NavBarPaciente/NavBarPaciente'
+import PacienteRegistro from './views/PacienteRegistro/PacienteRegistro'
 
 //bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
@@ -13,12 +15,24 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 function App() {
   return (
+    <Router 
+    history={history}>
     <div>
       <Navbar></Navbar>
       <NavBarPaciente></NavBarPaciente>
-      <Tables></Tables>
-      <Form></Form>
+      <Switch>
+        <Route
+          exact
+          path='/'
+          component={Tables}
+        />
+        <Route
+          path='/registro'
+          component={PacienteRegistro}
+        />
+      </Switch>
     </div>
+  </Router>
   );
 }
 
