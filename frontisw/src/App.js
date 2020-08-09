@@ -8,6 +8,7 @@ import Navbar from './components/navbar'; //si es javascript no es necesario que
 import Tables from './components/tables';
 import NavBarPaciente from './components/NavBarPaciente/NavBarPaciente'
 import PacienteRegistro from './views/PacienteRegistro/PacienteRegistro'
+import PacienteBuscar from './views/PacienteBuscar/PacienteBuscar'
 
 //bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
@@ -29,6 +30,10 @@ function App() {
         <Route
           path='/registro'
           component={PacienteRegistro}
+        />
+        <Route
+          path='/buscar'
+          component={PacienteBuscar}
         />
       </Switch>
     </div>
