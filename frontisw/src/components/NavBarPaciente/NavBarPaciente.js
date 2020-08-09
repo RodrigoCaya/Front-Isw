@@ -27,7 +27,7 @@ class NavBarPaciente extends Component{ //transforma la clase en componente
                 <div className='nav-options'>
                         {pages.map( (value, index) => {
                             return(
-                                <button type="button" class="btn btn-secondary" style={{marginRight: '30px'}}
+                                <button type="button" className="btn btn-secondary" style={{marginRight: '30px'}}
                                     onClick={() => {history.push(value.path)}} 
                                     key={index}
                                 >

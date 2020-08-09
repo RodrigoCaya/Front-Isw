@@ -40,8 +40,8 @@ class Tables extends Component{ //transforma la clase en componente
             <tbody>
                 {pacientes.map((pacientes,index)=>{
                     return (
-                    <tr>
-                        <React.Fragment key={pacientes.id}>
+                    <tr key={pacientes.id}>
+                        <React.Fragment>
                             <th scope="row">{index+1}</th>
                             <td>{pacientes.id}</td>
                             <td>{pacientes.nombre}</td>
@@ -50,7 +50,6 @@ class Tables extends Component{ //transforma la clase en componente
                             <td>{pacientes.diagnostico}</td>
                             <td>{pacientes.id_quimio}</td>
                             <td>{pacientes.id_recuperacion}</td>
-                            <br></br>
                         </React.Fragment>
                     </tr>
                     )
