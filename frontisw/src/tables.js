@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
 
-//import axios from 'axios';
+import pacientesService from './services/pacientes.service';
 
 class Tables extends Component{ //transforma la clase en componente
 
     constructor(props){
         super(props);
         this.state = {
-            paciente: [],
+            pacientes: [],
         }
     }
 
-    // componentDidMount(){ //es llamado la primera vez que la vista es renderizada (se llama 1 vez)
-    //     axios.get('https://loapisw.herokuapp.com/api/pacientes/getAll')
-    //     .then((response)=>{
-    //         this.setState({
-    //             ...this.state,
-    //             paciente: response.data,
-    //         })
-    //     })
-    // }
+    componentDidMount(){ //es llamado la primera vez que la vista es renderizada (se llama 1 vez)
+        pacientesService.getAll().then((response)=>{
+            this.setState({
+                pacientes: response.status === 200 ? response.data : [],
+            })
+        })
+    }
 
     render(){//esto es para que muestre contenido HTML
-        const { paciente } = this.state;
+        const { pacientes } = this.state;
 
         return(//codigo jsx
         <div>
@@ -40,26 +38,23 @@ class Tables extends Component{ //transforma la clase en componente
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>1</td>
-                <td>Otto</td>
-                <td>19.977.297-k</td>
-                <td>asd</td>
-                <td>xd</td>
-                <td>asd</td>
-                <td>xd</td>
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>2</td>
-                <td>Thornton</td>
-                <td>12.345.678-9</td>
-                <td>qwe</td>
-                <td>joa</td>
-                <td>qwe</td>
-                <td>joa</td>
-                </tr>
+                {pacientes.map((pacientes,index)=>{
+                    return (
+                    <tr>
+                        <React.Fragment key={pacientes.id}>
+                            <th scope="row">{index+1}</th>
+                            <td>{pacientes.id}</td>
+                            <td>{pacientes.nombre}</td>
+                            <td>{pacientes.rut}</td>
+                            <td>{pacientes.prioridad}</td>
+                            <td>{pacientes.diagnostico}</td>
+                            <td>{pacientes.id_quimio}</td>
+                            <td>{pacientes.id_recuperacion}</td>
+                            <br></br>
+                        </React.Fragment>
+                    </tr>
+                    )
+                })}
             </tbody>
             </table>
         </div>
