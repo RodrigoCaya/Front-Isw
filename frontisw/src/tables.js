@@ -24,7 +24,7 @@ class Tables extends Component{ //transforma la clase en componente
 
         return(//codigo jsx
         <div>
-            <table className="table">
+            <table className="table text-center">
             <thead className="bg-info">
                 <tr>
                 <th scope="col">#</th>
