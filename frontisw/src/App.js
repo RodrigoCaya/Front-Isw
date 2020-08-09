@@ -4,6 +4,7 @@ import './App.css';
 //my imports
 import Navbar from './navbar'; //si es javascript no es necesario que sea .js
 import Tables from './tables';
+import Form from './form';
 
 //bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
@@ -14,6 +15,7 @@ function App() {
     <div>
       <Navbar></Navbar>
       <Tables></Tables>
+      <Form></Form>
     </div>
   );
 }
