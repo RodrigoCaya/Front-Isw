@@ -11,7 +11,7 @@ function show(pacienteId) {
 }
 
 function create(data) {
-    return api.post(`${basePath}/paciente`, data);
+    return api.post(`${basePath}/paciente`,data);
 }
 
 const pacientesService = {

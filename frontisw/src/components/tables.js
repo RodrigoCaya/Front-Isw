@@ -23,7 +23,7 @@ class Tables extends Component{ //transforma la clase en componente
         const { pacientes } = this.state;
 
         return(//codigo jsx
-        <div>
+        <div className="jumbotron">
             <table className="table text-center">
             <thead className="bg-info">
                 <tr>
