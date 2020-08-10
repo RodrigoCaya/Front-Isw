@@ -9,7 +9,6 @@ import Tables from './components/tables';
 import NavBarPaciente from './components/NavBarPaciente/NavBarPaciente'
 import PacienteRegistro from './views/PacienteRegistro/PacienteRegistro'
 import PacienteBuscar from './views/PacienteBuscar/PacienteBuscar'
-import PacienteBorrar from './views/PacienteBorrar/PacienteBorrar';
 
 //bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
@@ -37,10 +36,6 @@ function App() {
         <Route
           path='/buscar'
           component={PacienteBuscar}
-        />
-        <Route
-          path='/borrar'
-          component={PacienteBorrar}
         />
       </Switch>
     </div>

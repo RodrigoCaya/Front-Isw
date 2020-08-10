@@ -12,9 +12,5 @@ export default function () {
             name: 'Agregar Paciente',
             path: '/registro'
         },
-        {
-            name: 'Borrar Paciente',
-            path: '/borrar'
-        },
     ];
 };

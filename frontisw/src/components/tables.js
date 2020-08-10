@@ -10,7 +10,7 @@ class Tables extends Component{ //transforma la clase en componente
             pacientes: [],
         }
     }
-
+    
     componentDidMount(){ //es llamado la primera vez que la vista es renderizada (se llama 1 vez)
         pacientesService.getAll().then((response)=>{
             this.setState({
@@ -18,10 +18,21 @@ class Tables extends Component{ //transforma la clase en componente
             })
         })
     }
-
+    
+    deletePaciente(id) {    
+        pacientesService.borrarPaciente(id)
+            .then(response => {
+                console.log(response.data);
+                this.props.history.push('/') //me lleva a la ruta "/"
+            })
+            .catch(e => {
+                console.log(e);
+            });
+        }
+    
     render(){//esto es para que muestre contenido HTML
         const { pacientes } = this.state;
-
+        
         return(//codigo jsx
         <div className="jumbotron">
             <table className="table text-center">
@@ -35,6 +46,7 @@ class Tables extends Component{ //transforma la clase en componente
                 <th scope="col">Diagnóstico</th>
                 <th scope="col">Quimioterapia</th>
                 <th scope="col">Recuperación</th>
+                <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,6 +62,13 @@ class Tables extends Component{ //transforma la clase en componente
                             <td>{pacientes.diagnostico}</td>
                             <td>{pacientes.id_quimio}</td>
                             <td>{pacientes.id_recuperacion}</td>
+                            <td>
+                                <a  href="#" className="btn btn-warning" onClick={()=>console.log(pacientes)}> Editar </a>
+                                
+                                <a  onClick={()=>this.deletePaciente(pacientes.id)}
+                                    href="#" className="btn btn-danger"> Borrar </a>
+
+                            </td>
                         </React.Fragment>
                     </tr>
                     )
