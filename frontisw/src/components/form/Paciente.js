@@ -12,13 +12,13 @@ const Paciente = ({ //funcion
     const [rut, setRut] = useState('');
     const [fecha_de_nacimiento, setFecha_de_nacimiento] = useState('');
     const [prioridad, setPrioridad] = useState('');
-    const [programa_de_salud, setPrograma_de_salud] = useState('');
+    const [programa_de_salud, setPrograma_de_salud] = useState('Escoge uno');
     const [diagnostico, setDiagnostico] = useState('');
     const [comentario, setComentario] = useState('');
     const options = [
       'FONASA', 'ISAPRE'
     ];
-    const defaultOption = "Escoge uno";
+    const defaultOption = programa_de_salud;
 
     const onSelect = (event) => {
       // console.log(event);

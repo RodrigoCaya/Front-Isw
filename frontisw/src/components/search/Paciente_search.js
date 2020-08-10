@@ -7,19 +7,20 @@ import 'react-dropdown/style.css';
 
 import pacientesService from '../../services/pacientes.service';
 
+import { useList } from 'react-hooks-lib'
+
 const Paciente_search = ({
     onSubmit
     }) => {
-        const [state, setState] = useState('');
-        const [param, setParam] = useState('');
+        // const {pacientes,push,set} = useList([]);
+        const [state, setState] = useState([]);
+        const [param, setParam] = useState('Escoge uno');
         const [valor, setValor] = useState('');
-        const [pacientes, setPacientes] = useState('');
-
+        // const [pacientes = [], setPacientes] = useState('');
 
         const options = [
             'Id', 'Rut', 'Nombre', 'Prioridad', 'Diagnóstico'
           ];
-        const defaultOption = "Escoge uno";
     
         const onSelect = (event) => {
         // console.log(event);
@@ -29,13 +30,44 @@ const Paciente_search = ({
         }
 
         const showPaciente = (event) => {
-            setState(
-                param === 'Id' ? pacientesService.show_id(valor) : alert("No se ha encontrado paciente"),
-                param === 'Rut' ? pacientesService.show_rut(valor) : [],
-                param === 'Nombre' ? pacientesService.show_nombre(valor) : [],
-                param === 'Prioridad' ? pacientesService.show_prioridad(valor) : [],
-                param === 'Diagnostico' ? pacientesService.show_diagnostico(valor) : []
-            );
+            event.preventDefault();
+            switch(param){
+                case 'Id': 
+                pacientesService.show_id(valor).then((response)=>{
+                    setState(
+                        response.status === 200 ? [response.data] : [],
+                    );
+                });
+                break;
+                case 'Rut': 
+                pacientesService.show_rut(valor).then((response)=>{
+                    setState(
+                        response.status === 200 ? [response.data] : [],
+                    );
+                });
+                break;
+                case 'Nombre': 
+                pacientesService.show_nombre(valor).then((response)=>{
+                    setState(
+                        response.status === 200 ? response.data : [],
+                    );
+                });
+                break;
+                case 'Prioridad': 
+                pacientesService.show_prioridad(valor).then((response)=>{
+                    setState(
+                        response.status === 200 ? response.data : [],
+                    );
+                });
+                break;
+                case 'Diagnóstico': 
+                pacientesService.show_diagnostico(valor).then((response)=>{
+                    setState(
+                        response.status === 200 ? response.data : [],
+                    );
+                });
+                break;
+            };
             }
 
         return(
@@ -44,7 +76,7 @@ const Paciente_search = ({
                 <div className="form-row " style={{display: 'block',  justifyContent:'center', alignItems:'center'}} ></div>
                     <div className="col-md-12 mb-3">
                         <label htmlFor="validationTooltip04">Seleccione filtro de búsqueda</label>
-                            <Dropdown options={options} onChange={onSelect} value={defaultOption} placeholder="Select an option" />
+                            <Dropdown options={options} onChange={onSelect} value= {param} placeholder="Select an option" />
                         
                     </div>
                     <div className="col-md-12 mb-3">
@@ -72,7 +104,7 @@ const Paciente_search = ({
                     </tr>
                 </thead>
                 <tbody>
-                    {pacientes.map((pacientes,index)=>{
+                    {state.map((pacientes,index)=>{
                         return (
                         <tr key={pacientes.id}>
                             <React.Fragment>
