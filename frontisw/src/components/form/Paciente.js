@@ -63,8 +63,8 @@ const Paciente = ({
             <textarea value={comentario} onChange={(event) => setComentario(event.target.value)} className="form-control" id="descripcionProblema" rows="10"></textarea>
             </div>
         </div>
-        {/* {console.log(programa_de_salud)} */}
-        <button 
+        {console.log("xd")}
+        <button
         onClick={(event) => onSubmit({'id_quimio': null,'id_recuperacion': null,'nombre': nombre,'fecha_de_nacimiento': fecha_de_nacimiento,'fecha_de_defuncion': null,'rut': rut,'programa_de_salud': programa_de_salud,'diagnostico': diagnostico,'entrada': null,'salida': null,'prioridad': prioridad,'comentario': comentario})} 
         className="btn btn-primary">Registrar</button>
         </form>
