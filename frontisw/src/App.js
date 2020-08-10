@@ -15,6 +15,8 @@ import PacienteBorrar from './views/PacienteBorrar/PacienteBorrar';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
+
+
 function App() {
   return (
     <Router 

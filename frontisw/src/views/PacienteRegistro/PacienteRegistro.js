@@ -5,6 +5,8 @@ import Paciente from "../../components/form/Paciente";
 import pacientesService from '../../services/pacientes.service';
 
 
+
+
 class PacienteRegistro extends Component{ //transforma la clase en componente
 
     constructor(props) {
@@ -18,6 +20,8 @@ class PacienteRegistro extends Component{ //transforma la clase en componente
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
     }
+
+    
 
     render(){//esto es para que muestre contenido HTML
         return(//codigo jsx

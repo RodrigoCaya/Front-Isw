@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from "prop-types"; 
 
+//react-dropdown
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
-const Paciente = ({
+import ReactDOM from 'react-dom';
+
+const Paciente = ({ //funcion
   onSubmit
   }) => {
     const [nombre, setNombre] = useState('');
@@ -12,6 +17,18 @@ const Paciente = ({
     const [programa_de_salud, setPrograma_de_salud] = useState('');
     const [diagnostico, setDiagnostico] = useState('');
     const [comentario, setComentario] = useState('');
+    const options = [
+      'FONASA', 'ISAPRE'
+    ];
+    const defaultOption = "Escoge uno";
+
+    const onSelect = (event) => {
+      // console.log(event);
+      setPrograma_de_salud(
+        event.value
+      );
+      
+    }
 
     return(
         <form className="needs-validation" noValidate>
@@ -44,26 +61,16 @@ const Paciente = ({
             </div>
 
             <div className="col-md-6 mb-3">
-            <label htmlFor="validationTooltip02">Plan de salud</label>
-            <input value={programa_de_salud} type="text" onChange={(event) => setPrograma_de_salud(event.target.value)} className="form-control" id="validation04" placeholder="FONASA-ISAPRE"/>
-            </div>
-        
-
-            {/* <div className="col-md-6 mb-3">
             <label htmlFor="validationTooltip04">Plan de Salud</label>
-            <select defaultValue="" className="custom-select" id="validation06" required>
-                <option disabled value="">Choose...</option>
-                <option value={programa_de_salud} onSubmit={(event) => setPrograma_de_salud('FONASA')}>FONASA</option>
-                <option value={programa_de_salud} onSubmit={(event) => setPrograma_de_salud('ISAPRE')}>ISAPRE</option>
-            </select>
-            </div> */}
+            <Dropdown options={options} onChange={onSelect} value={defaultOption} placeholder="Select an option" />
+            </div>
             
             <div className="col-md-12 mb-3">
             <label htmlFor="validationTooltip03">Comentario</label>
             <textarea value={comentario} onChange={(event) => setComentario(event.target.value)} className="form-control" id="descripcionProblema" rows="10"></textarea>
             </div>
         </div>
-        {console.log("xd")}
+        {/* {console.log(programa_de_salud)} */}
         <button
         onClick={(event) => onSubmit({'id_quimio': null,'id_recuperacion': null,'nombre': nombre,'fecha_de_nacimiento': fecha_de_nacimiento,'fecha_de_defuncion': null,'rut': rut,'programa_de_salud': programa_de_salud,'diagnostico': diagnostico,'entrada': null,'salida': null,'prioridad': prioridad,'comentario': comentario})} 
         className="btn btn-primary">Registrar</button>
@@ -71,6 +78,8 @@ const Paciente = ({
     );
   }
 
+
+  
 Paciente.propTypes = {
   onSubmit: PropTypes.func,
 }
