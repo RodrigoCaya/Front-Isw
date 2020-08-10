@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
-import ReactDOM from 'react-dom';
-
 const Paciente = ({ //funcion
   onSubmit
   }) => {
@@ -27,7 +25,6 @@ const Paciente = ({ //funcion
       setPrograma_de_salud(
         event.value
       );
-      
     }
 
     return(
@@ -61,8 +58,8 @@ const Paciente = ({ //funcion
             </div>
 
             <div className="col-md-6 mb-3">
-            <label htmlFor="validationTooltip04">Plan de Salud</label>
-            <Dropdown options={options} onChange={onSelect} value={defaultOption} placeholder="Select an option" />
+              <label htmlFor="validationTooltip04">Plan de Salud</label>
+              <Dropdown options={options} onChange={onSelect} value={defaultOption} placeholder="Select an option" />
             </div>
             
             <div className="col-md-12 mb-3">

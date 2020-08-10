@@ -6,8 +6,24 @@ function getAll() {
     return api.get(`${basePath}/getAll`);
 }
 
-function show(pacienteId) {
-    return api.get(`${basePath}/?id=${pacienteId}`)
+function show_id(pacienteId) {
+    return api.get(`${basePath}/paciente/${pacienteId}`)
+}
+
+function show_rut(rut) {
+    return api.get(`${basePath}/rut_paciente/${rut}`)
+}
+
+function show_nombre(nombre) {
+    return api.get(`${basePath}/nombre_paciente/${nombre}`)
+}
+
+function show_diagnostico(diagnostico) {
+    return api.get(`${basePath}/diagnostico/${diagnostico}`)
+}
+
+function show_prioridad(prioridad) {
+    return api.get(`${basePath}/prioridad/${prioridad}`)
 }
 
 function borrarPaciente(id) {
@@ -20,7 +36,11 @@ function create(data) {
 
 const pacientesService = {
     getAll,
-    show,
+    show_id,
+    show_rut,
+    show_nombre,
+    show_diagnostico,
+    show_prioridad,
     create,
     borrarPaciente,
 };
