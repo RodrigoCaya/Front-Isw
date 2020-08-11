@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import pacientesService from '../services/pacientes.service';
+import quimioService from '../services/quimio.service';
+// import pacientesService from '../services/pacientes.service';
 
 import Dropdown from 'react-dropdown';
 
@@ -22,6 +24,18 @@ class Tables extends Component{ //transforma la clase en componente
                 pacientes: response.status === 200 ? response.data : [],
             })
         })
+        // pacientesService.getAll().then((response)=>{
+        //     this.setState({
+        //         ...this.state,
+        //         pacientes: response.status === 200 ? response.data : [],
+        //     })
+        // })
+        // pacientesService.getAll().then((response)=>{
+        //     this.setState({
+        //         ...this.state,
+        //         pacientes: response.status === 200 ? response.data : [],
+        //     })
+        // })
         // quimioget
         // recuperacionget
     }
