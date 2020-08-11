@@ -117,12 +117,9 @@ const Paciente_search = ({
                                 <td>{pacientes.diagnostico}</td>
                                 <td>{pacientes.id_quimio}</td>
                                 <td>{pacientes.id_recuperacion}</td>
-                                <td>
-                                    <a  href="#" className="btn btn-warning" onClick={()=>console.log(pacientes)}> Editar </a>
-                                    
+                                <td>                                    
                                     <a  onClick={()=>pacientesService.borrarPaciente(pacientes.id)}
                                         href="#" className="btn btn-danger"> Borrar </a>
-
                                 </td>
                             </React.Fragment>
                         </tr>

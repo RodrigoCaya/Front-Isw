@@ -14,11 +14,22 @@ const Paciente = ({ //funcion
     const [prioridad, setPrioridad] = useState('');
     const [programa_de_salud, setPrograma_de_salud] = useState('Escoge uno');
     const [diagnostico, setDiagnostico] = useState('');
-    const [comentario, setComentario] = useState('');
     const options = [
       'FONASA', 'ISAPRE'
     ];
     const defaultOption = programa_de_salud;
+
+    const obj = {'id_quimio': null,
+                 'id_recuperacion': null,
+                 'nombre': nombre,
+                 'fecha_de_nacimiento': fecha_de_nacimiento,
+                 'fecha_de_defuncion': null,
+                 'rut': rut,
+                 'programa_de_salud': programa_de_salud,
+                 'diagnostico': diagnostico,
+                 'entrada': null,
+                 'salida': null,
+                 'prioridad': prioridad}
 
     const onSelect = (event) => {
       // console.log(event);
@@ -61,15 +72,10 @@ const Paciente = ({ //funcion
               <label htmlFor="validationTooltip04">Plan de Salud</label>
               <Dropdown options={options} onChange={onSelect} value={defaultOption} placeholder="Select an option" />
             </div>
-            
-            <div className="col-md-12 mb-3">
-            <label htmlFor="validationTooltip03">Comentario</label>
-            <textarea value={comentario} onChange={(event) => setComentario(event.target.value)} className="form-control" id="descripcionProblema" rows="10"></textarea>
-            </div>
         </div>
         {/* {console.log(programa_de_salud)} */}
         <button
-        onClick={(event) => onSubmit({'id_quimio': null,'id_recuperacion': null,'nombre': nombre,'fecha_de_nacimiento': fecha_de_nacimiento,'fecha_de_defuncion': null,'rut': rut,'programa_de_salud': programa_de_salud,'diagnostico': diagnostico,'entrada': null,'salida': null,'prioridad': prioridad,'comentario': comentario})} 
+        onClick={(event) => onSubmit(obj)} 
         className="btn btn-primary">Registrar</button>
         </form>
     );

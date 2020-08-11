@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import pacientesService from '../services/pacientes.service';
-import quimioService from '../services/quimio.service';
-// import pacientesService from '../services/pacientes.service';
 
 import Dropdown from 'react-dropdown';
 
@@ -24,18 +22,6 @@ class Tables extends Component{ //transforma la clase en componente
                 pacientes: response.status === 200 ? response.data : [],
             })
         })
-        // pacientesService.getAll().then((response)=>{
-        //     this.setState({
-        //         ...this.state,
-        //         pacientes: response.status === 200 ? response.data : [],
-        //     })
-        // })
-        // pacientesService.getAll().then((response)=>{
-        //     this.setState({
-        //         ...this.state,
-        //         pacientes: response.status === 200 ? response.data : [],
-        //     })
-        // })
         // quimioget
         // recuperacionget
     }
@@ -70,6 +56,7 @@ class Tables extends Component{ //transforma la clase en componente
                 <th scope="col">Nombre</th>
                 <th scope="col">Rut</th>
                 <th scope="col">Prioridad</th>
+                <th scope="col">Programa de Salud</th>
                 <th scope="col">Diagnóstico</th>
                 <th scope="col">Quimioterapia</th>
                 <th scope="col">Recuperación</th>
@@ -86,6 +73,7 @@ class Tables extends Component{ //transforma la clase en componente
                             <td>{pacientes.nombre}</td>
                             <td>{pacientes.rut}</td>
                             <td>{pacientes.prioridad}</td>
+                            <td>{pacientes.programa_de_salud}</td>
                             <td>{pacientes.diagnostico}</td>
                             <td>{pacientes.id_quimio}12
                                 <div class="col-8">
@@ -97,12 +85,9 @@ class Tables extends Component{ //transforma la clase en componente
                                     <Dropdown options={options_rec} value= "Cambia" placeholder="Select an option" />
                                 </div>
                             </td>
-                            <td>
-                                <a  href="#" className="btn btn-warning" onClick={()=>console.log(pacientes)}> Editar </a>
-                                
+                            <td>                                
                                 <a  onClick={()=>this.deletePaciente(pacientes.id)}
                                     href="#" className="btn btn-danger"> Borrar </a>
-
                             </td>
                         </React.Fragment>
                     </tr>
