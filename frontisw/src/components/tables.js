@@ -2,21 +2,28 @@ import React, { Component } from 'react';
 
 import pacientesService from '../services/pacientes.service';
 
+import Dropdown from 'react-dropdown';
+
 class Tables extends Component{ //transforma la clase en componente
 
     constructor(props){
         super(props);
         this.state = {
             pacientes: [],
+            options_quimio : ['Id', 'Rut', 'Nombre', 'Prioridad', 1],
+            options_rec : ['Id', 'Rut', 'Nombre', 'Prioridad', 'Diagnóstico'],
         }
     }
-    
+
     componentDidMount(){ //es llamado la primera vez que la vista es renderizada (se llama 1 vez)
         pacientesService.getAll().then((response)=>{
             this.setState({
+                ...this.state,
                 pacientes: response.status === 200 ? response.data : [],
             })
         })
+        // quimioget
+        // recuperacionget
     }
     
     deletePaciente(id) {    
@@ -29,10 +36,16 @@ class Tables extends Component{ //transforma la clase en componente
                 console.log(e);
             });
         }
+
+    // quimio_rec(id_qc) {
+    //     this.setState(
+    //         pacientes.id_quimio === '' ? null : null,
+    //     );
+    // }
     
     render(){//esto es para que muestre contenido HTML
-        const { pacientes } = this.state;
-        
+        const { pacientes,options_quimio,options_rec } = this.state;
+
         return(//codigo jsx
         <div className="jumbotron">
             <table className="table text-center">
@@ -60,8 +73,16 @@ class Tables extends Component{ //transforma la clase en componente
                             <td>{pacientes.rut}</td>
                             <td>{pacientes.prioridad}</td>
                             <td>{pacientes.diagnostico}</td>
-                            <td>{pacientes.id_quimio}</td>
-                            <td>{pacientes.id_recuperacion}</td>
+                            <td>{pacientes.id_quimio}12
+                                <div class="col-8">
+                                    <Dropdown options={options_quimio} value= "Cambia" placeholder="Select an option"/>
+                                </div>
+                            </td>
+                            <td>{pacientes.id_recuperacion}
+                                <div class="col-8">
+                                    <Dropdown options={options_rec} value= "Cambia" placeholder="Select an option" />
+                                </div>
+                            </td>
                             <td>
                                 <a  href="#" className="btn btn-warning" onClick={()=>console.log(pacientes)}> Editar </a>
                                 

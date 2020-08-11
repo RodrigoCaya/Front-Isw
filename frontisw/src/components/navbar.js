@@ -7,9 +7,9 @@ class NavBar extends Component{ //transforma la clase en componente
         <div>
             <nav className="navbar navbar-dark bg-dark"> {/*hola*/}
             <a className="navbar-brand" href="https://frontpaciente.herokuapp.com/">Paciente</a>
-            <a className="navbar-brand" href="#">Personal</a>
+            <a className="navbar-brand" href="#">https://isw-frontend-personal.herokuapp.com/</a>
             <a className="navbar-brand" href="#">Pabellón</a>
-            <a className="navbar-brand" href="#">Recuperación</a>
+            <a className="navbar-brand" href="https://ursidae-rec.herokuapp.com/">Recuperación</a>
             <a className="navbar-brand" href="#">Quimioterapia</a>
             </nav>
         </div>
