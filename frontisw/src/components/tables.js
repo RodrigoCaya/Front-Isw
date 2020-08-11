@@ -48,14 +48,7 @@ class Tables extends Component{ //transforma la clase en componente
                 )
             }) 
         })
-        // pacientesService.getAll().then((response)=>{
-        //     this.setState({
-        //         ...this.state,
-        //         pacientes: response.status === 200 ? response.data : [],
-        //     })
-        // })
-        // quimioget
-        // recuperacionget
+        
     }
     
     deletePaciente(id) {    
@@ -109,7 +102,7 @@ class Tables extends Component{ //transforma la clase en componente
                 <th scope="col">Programa de Salud</th>
                 <th scope="col">Diagnóstico</th>
                 <th scope="col">Quimioterapia</th>
-                <th scope="col">Recuperación</th>
+                {/* <th scope="col">Recuperación</th> */}
                 <th scope="col">Opciones</th>
                 </tr>
             </thead>
@@ -130,11 +123,11 @@ class Tables extends Component{ //transforma la clase en componente
                                     <Dropdown options={this.state.options_para_quimio} onChange={(event) => this.onSelect(event,pacientes.id)} value= "Cambia" placeholder="Select an option"/>
                                 </div>
                             </td>
-                            <td>{pacientes.id_recuperacion}
+                            {/* <td>{pacientes.id_recuperacion}
                                 <div className="col-8">
                                     <Dropdown options={options_rec} value= "Cambia" placeholder="Select an option" />
                                 </div>
-                            </td>
+                            </td> */}
                             <td>                                
                                 <a  onClick={()=>this.deletePaciente(pacientes.id)}
                                     href="#" className="btn btn-danger"> Borrar </a>

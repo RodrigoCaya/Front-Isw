@@ -100,7 +100,7 @@ const Paciente_search = ({
                     <th scope="col">Prioridad</th>
                     <th scope="col">Diagnóstico</th>
                     <th scope="col">Quimioterapia</th>
-                    <th scope="col">Recuperación</th>
+                    {/* <th scope="col">Recuperación</th> */}
                     <th scope="col">Opciones</th>
                     </tr>
                 </thead>
@@ -116,7 +116,7 @@ const Paciente_search = ({
                                 <td>{pacientes.prioridad}</td>
                                 <td>{pacientes.diagnostico}</td>
                                 <td>{pacientes.id_quimio}</td>
-                                <td>{pacientes.id_recuperacion}</td>
+                                {/* <td>{pacientes.id_recuperacion}</td> */}
                                 <td>                                    
                                     <a  onClick={()=>pacientesService.borrarPaciente(pacientes.id)}
                                         href="#" className="btn btn-danger"> Borrar </a>
