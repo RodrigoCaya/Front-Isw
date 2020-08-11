@@ -34,6 +34,10 @@ function create(data) {
     return api.post(`${basePath}/paciente`,data);
 }
 
+function agregar_quimio(id,data) {
+    return api.put(`${basePath}/quimio/${id}`,data);
+}
+
 const pacientesService = {
     getAll,
     show_id,
@@ -43,6 +47,7 @@ const pacientesService = {
     show_prioridad,
     create,
     borrarPaciente,
+    agregar_quimio
 };
 
 export default pacientesService;

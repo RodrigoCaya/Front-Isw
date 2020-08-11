@@ -70,11 +70,27 @@ class Tables extends Component{ //transforma la clase en componente
         }
 
     filtrarPorActivo(obj) {
-        if ('activo' in obj && (obj.activo) && obj.sillones.length !== 0) {
+        if ('activo' in obj && (obj.activo) && obj.sillones.length !== 0 && !(obj.asignado)) {
         return true;
         } else {
         return false;
         }
+    }
+
+    onSelect(event,id) {
+        console.log("EQUIS DE ",event.value)
+        let nuevo_quimio = {
+            "id_quimio":event.value.slice(-1)
+        }
+        
+        pacientesService.agregar_quimio(id,nuevo_quimio)
+        let act = {
+            "id": event.value.slice(-1),
+            "asignado": true,
+            "activo": true
+        }
+        quimioService.actualizar(act)
+        
     }
     
     render(){//esto es para que muestre contenido HTML
@@ -111,7 +127,7 @@ class Tables extends Component{ //transforma la clase en componente
                             <td>{pacientes.diagnostico}</td>
                             <td>{pacientes.id_quimio}
                                 <div className="col-8">
-                                    <Dropdown options={this.state.options_para_quimio} value= "Cambia" placeholder="Select an option"/>
+                                    <Dropdown options={this.state.options_para_quimio} onChange={(event) => this.onSelect(event,pacientes.id)} value= "Cambia" placeholder="Select an option"/>
                                 </div>
                             </td>
                             <td>{pacientes.id_recuperacion}
