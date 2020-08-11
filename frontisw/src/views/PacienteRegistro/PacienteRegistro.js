@@ -16,6 +16,7 @@ class PacienteRegistro extends Component{ //transforma la clase en componente
       }
 
     handlePacienteSubmit(data) {
+   
     pacientesService.create(data)
         .then((response) => console.log(response))
         .catch((error) => console.log(error));

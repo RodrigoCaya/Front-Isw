@@ -32,9 +32,11 @@ class Tables extends Component{ //transforma la clase en componente
             this.setState({
                 ...this.state,
                 options_quimio: response.status === 200 ? response.data : [],
-            })
-            this.arrPorActivo = this.state.options_quimio.filter(this.filtrarPorActivo)
-            // console.log("AAAAA",this.arrPorActivo)
+            });
+            this.arrPorActivo = this.state.options_quimio.filter(this.filtrarPorActivo);
+            this.sala = this.arrPorActivo.sala;
+            console.log("AAAAA",this.arrPorActivo);
+            console.log("BBBBB",this.sala)
         })
         // pacientesService.getAll().then((response)=>{
         //     this.setState({
@@ -58,7 +60,7 @@ class Tables extends Component{ //transforma la clase en componente
         }
 
     filtrarPorActivo(obj) {
-        if ('activo' in obj && (obj.activo)) {
+        if ('activo' in obj && (obj.activo) && obj.sillones.length != 0) {
         return true;
         } else {
         return false;
@@ -97,7 +99,7 @@ class Tables extends Component{ //transforma la clase en componente
                             <td>{pacientes.prioridad}</td>
                             <td>{pacientes.programa_de_salud}</td>
                             <td>{pacientes.diagnostico}</td>
-                            <td>{pacientes.id_quimio}12
+                            <td>{pacientes.id_quimio}
                                 <div class="col-8">
                                     <Dropdown options={options_quimio} value= "Cambia" placeholder="Select an option"/>
                                 </div>

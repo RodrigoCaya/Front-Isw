@@ -75,7 +75,7 @@ const Paciente = ({ //funcion
         </div>
         {/* {console.log(programa_de_salud)} */}
         <button
-        onClick={(event) => onSubmit(obj)} 
+        onClick={(event) => {event.preventDefault(); onSubmit(obj);}}
         className="btn btn-primary">Registrar</button>
         </form>
     );
