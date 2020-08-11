@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import pacientesService from '../services/pacientes.service';
+import quimioService from '../services/quimio.service';
+// import pacientesService from '../services/pacientes.service';
 
 import Dropdown from 'react-dropdown';
 
@@ -8,11 +10,15 @@ class Tables extends Component{ //transforma la clase en componente
 
     constructor(props){
         super(props);
+
+        
         this.state = {
             pacientes: [],
-            options_quimio : ['Id', 'Rut', 'Nombre', 'Prioridad', 1],
+            options_quimio : [],
             options_rec : ['Id', 'Rut', 'Nombre', 'Prioridad', 'Diagnóstico'],
         }
+        
+        
     }
 
     componentDidMount(){ //es llamado la primera vez que la vista es renderizada (se llama 1 vez)
@@ -22,6 +28,20 @@ class Tables extends Component{ //transforma la clase en componente
                 pacientes: response.status === 200 ? response.data : [],
             })
         })
+        quimioService.get_sala().then((response)=>{
+            this.setState({
+                ...this.state,
+                options_quimio: response.status === 200 ? response.data : [],
+            })
+            this.arrPorActivo = this.state.options_quimio.filter(this.filtrarPorActivo)
+            // console.log("AAAAA",this.arrPorActivo)
+        })
+        // pacientesService.getAll().then((response)=>{
+        //     this.setState({
+        //         ...this.state,
+        //         pacientes: response.status === 200 ? response.data : [],
+        //     })
+        // })
         // quimioget
         // recuperacionget
     }
@@ -37,11 +57,13 @@ class Tables extends Component{ //transforma la clase en componente
             });
         }
 
-    // quimio_rec(id_qc) {
-    //     this.setState(
-    //         pacientes.id_quimio === '' ? null : null,
-    //     );
-    // }
+    filtrarPorActivo(obj) {
+        if ('activo' in obj && (obj.activo)) {
+        return true;
+        } else {
+        return false;
+        }
+    }
     
     render(){//esto es para que muestre contenido HTML
         const { pacientes,options_quimio,options_rec } = this.state;
