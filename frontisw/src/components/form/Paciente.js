@@ -48,7 +48,7 @@ const Paciente = ({ //funcion
 
             <div className="col-md-6 mb-3">
             <label htmlFor="validationTooltip02">Rut</label>
-            <input value={rut} type="text" onChange={(event) => setRut(event.target.value)} className="form-control" id="validation02" placeholder="xx.xxx.xxx-x"/>
+            <input value={rut} type="text" onChange={(event) => setRut(event.target.value)} className="form-control" id="validation02" placeholder="xxxxxxxx-x"/>
             </div>
 
             <div className="col-md-6 mb-3">

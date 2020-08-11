@@ -15,6 +15,7 @@ class Tables extends Component{ //transforma la clase en componente
         this.state = {
             pacientes: [],
             options_quimio : [],
+            options_para_quimio : [],
             options_rec : ['Id', 'Rut', 'Nombre', 'Prioridad', 'Diagnóstico'],
         }
         
@@ -33,13 +34,15 @@ class Tables extends Component{ //transforma la clase en componente
                 ...this.state,
                 options_quimio: response.status === 200 ? response.data : [],
             });
-            this.options_quimio = this.state.options_quimio.filter(this.filtrarPorActivo);
+
             
-            console.log("AAAAA",this.options_quimio);
-            this.state.options_quimio.map((pac,index)=>{
+            this.state.options_quimio.filter(this.filtrarPorActivo).map((sala,index)=>{
+                console.log("AAAAAA",sala)
                 return(
-                    pac.sillones.map((pac2,index)=>{
-                        console.log("XDDD")
+                    sala.sillones.map((sillon,index)=>{
+                        // console.log("XDDD",sillon.activo,sillon.idSala)
+                        this.state.options_para_quimio.push('Sala: '+sillon.idSala+'/Sillon: '+sillon.id)
+                        // console.log("PANTUFLA",this.state.options_para_quimio)
                     }
                     )
                 )
@@ -107,12 +110,12 @@ class Tables extends Component{ //transforma la clase en componente
                             <td>{pacientes.programa_de_salud}</td>
                             <td>{pacientes.diagnostico}</td>
                             <td>{pacientes.id_quimio}
-                                <div class="col-8">
-                                    <Dropdown options={options_quimio} value= "Cambia" placeholder="Select an option"/>
+                                <div className="col-8">
+                                    <Dropdown options={this.state.options_para_quimio} value= "Cambia" placeholder="Select an option"/>
                                 </div>
                             </td>
                             <td>{pacientes.id_recuperacion}
-                                <div class="col-8">
+                                <div className="col-8">
                                     <Dropdown options={options_rec} value= "Cambia" placeholder="Select an option" />
                                 </div>
                             </td>
