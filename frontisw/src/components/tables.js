@@ -33,10 +33,17 @@ class Tables extends Component{ //transforma la clase en componente
                 ...this.state,
                 options_quimio: response.status === 200 ? response.data : [],
             });
-            this.arrPorActivo = this.state.options_quimio.filter(this.filtrarPorActivo);
-            this.sala = this.arrPorActivo.sala;
-            console.log("AAAAA",this.arrPorActivo);
-            console.log("BBBBB",this.sala)
+            this.options_quimio = this.state.options_quimio.filter(this.filtrarPorActivo);
+            
+            console.log("AAAAA",this.options_quimio);
+            this.state.options_quimio.map((pac,index)=>{
+                return(
+                    pac.sillones.map((pac2,index)=>{
+                        console.log("XDDD")
+                    }
+                    )
+                )
+            }) 
         })
         // pacientesService.getAll().then((response)=>{
         //     this.setState({
@@ -60,7 +67,7 @@ class Tables extends Component{ //transforma la clase en componente
         }
 
     filtrarPorActivo(obj) {
-        if ('activo' in obj && (obj.activo) && obj.sillones.length != 0) {
+        if ('activo' in obj && (obj.activo) && obj.sillones.length !== 0) {
         return true;
         } else {
         return false;
@@ -69,7 +76,7 @@ class Tables extends Component{ //transforma la clase en componente
     
     render(){//esto es para que muestre contenido HTML
         const { pacientes,options_quimio,options_rec } = this.state;
-
+        
         return(//codigo jsx
         <div className="jumbotron">
             <table className="table text-center">
