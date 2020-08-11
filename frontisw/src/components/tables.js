@@ -29,22 +29,22 @@ class Tables extends Component{ //transforma la clase en componente
                 pacientes: response.status === 200 ? response.data : [],
             })
         })
-        quimioService.get_sala().then((response)=>{
+        quimioService.get_sillon().then((response)=>{
             this.setState({
                 ...this.state,
                 options_quimio: response.status === 200 ? response.data : [],
             });
 
             
-            this.state.options_quimio.filter(this.filtrarPorActivo).map((sala,index)=>{
-                console.log("AAAAAA",sala)
+            this.state.options_quimio.filter(this.filtrarPorActivo).map((sillon,index)=>{
+                // console.log("AAAAAA",sala)
                 return(
-                    sala.sillones.map((sillon,index)=>{
-                        // console.log("XDDD",sillon.activo,sillon.idSala)
-                        this.state.options_para_quimio.push('Sala: '+sillon.idSala+'/Sillon: '+sillon.id)
-                        // console.log("PANTUFLA",this.state.options_para_quimio)
-                    }
-                    )
+                    this.state.options_para_quimio.push('Sala: '+sillon.idSala+'/Sillon: '+sillon.id)
+                    // sala.sillones.map((sillon,index)=>{
+                    //     // console.log("XDDD",sillon.activo,sillon.idSala)
+                    //     // console.log("PANTUFLA",this.state.options_para_quimio)
+                    // }
+                    // )
                 )
             }) 
         })
@@ -63,7 +63,7 @@ class Tables extends Component{ //transforma la clase en componente
         }
 
     filtrarPorActivo(obj) {
-        if ('activo' in obj && (obj.activo) && obj.sillones.length !== 0 && !(obj.asignado)) {
+        if ('activo' in obj && (obj.activo) && !(obj.asignado)) {
         return true;
         } else {
         return false;
@@ -71,7 +71,7 @@ class Tables extends Component{ //transforma la clase en componente
     }
 
     onSelect(event,id) {
-        console.log("EQUIS DE ",event.value)
+        console.log("EQUIS DE ",event.value.slice(6,7))
         let nuevo_quimio = {
             "id_quimio":event.value.slice(-1)
         }
@@ -80,7 +80,8 @@ class Tables extends Component{ //transforma la clase en componente
         let act = {
             "id": event.value.slice(-1),
             "asignado": true,
-            "activo": true
+            "activo": true,
+            "idSala": event.value.slice(6,7)
         }
         quimioService.actualizar(act)
         
