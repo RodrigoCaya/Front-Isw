@@ -29,6 +29,7 @@ const Paciente_search = ({
         );
         }
 
+        
         const showPaciente = (event) => {
             event.preventDefault();
             switch(param){
@@ -116,13 +117,13 @@ const Paciente_search = ({
                                 <td>{pacientes.diagnostico}</td>
                                 <td>{pacientes.id_quimio}</td>
                                 <td>{pacientes.id_recuperacion}</td>
-                                {/* <td>
+                                <td>
                                     <a  href="#" className="btn btn-warning" onClick={()=>console.log(pacientes)}> Editar </a>
                                     
-                                    <a  onClick={()=>this.deletePaciente(pacientes.id)}
+                                    <a  onClick={()=>pacientesService.borrarPaciente(pacientes.id)}
                                         href="#" className="btn btn-danger"> Borrar </a>
 
-                                </td> */}
+                                </td>
                             </React.Fragment>
                         </tr>
                         )
