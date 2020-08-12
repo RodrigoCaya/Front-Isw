@@ -71,14 +71,14 @@ class Tables extends Component{ //transforma la clase en componente
     }
 
     onSelect(event,id) {
-        console.log("EQUIS DE ",event.value.slice(6,7))
+        console.log("EQUIS DE ",event.value.split(" ")[2])
         let nuevo_quimio = {
-            "id_quimio":event.value.slice(-1)
+            "id_quimio":event.value.split(" ")[2]
         }
         
         pacientesService.agregar_quimio(id,nuevo_quimio)
         let act = {
-            "id": event.value.slice(-1),
+            "id": event.value.split(" ")[2],
             "asignado": true,
             "activo": true,
             "idSala": event.value.slice(6,7)
